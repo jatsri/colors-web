@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import fetchColors from '../service/fetchColors';
 
 class App extends React.Component {
     render() {
@@ -15,11 +14,6 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {}
-}
-
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(App);
