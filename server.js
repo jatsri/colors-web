@@ -13,8 +13,18 @@ app.listen('5000', () => {
     console.log('Server is listening on 5000');
 })
 
-const initialState = {};
-const store = createStore(combineReducers({}), initialState);
+const initialState = {
+    colors: [],
+    addedColors: [],
+    removedColor: {}
+};
+const store = createStore((state, action) => {
+    if(state === undefined) {
+        return initialState
+    } else {
+        return state;
+    }
+}, initialState);
 
 const html = renderToString(
     <Provider store={store}>
