@@ -2,15 +2,19 @@ import express from 'express';
 import React from 'react';
 import path from 'path';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { renderToString } from 'react-dom/server';
 
 import receiveColors from './reducer/receiveColors';
 import addColors from './reducer/addColors';
 import removeColor from './reducer/removeColor';
 import App from './components/App';
+import fetchColors from './service/fetchColors';
 
 const app = express();
+
+const middlewares = [thunk];
 
 app.use('/assets', express.static(path.resolve(__dirname, 'assets')));
 
@@ -24,10 +28,12 @@ const initialState = {
     removedColor: {}
 };
 const store = createStore(combineReducers({
-    receiveColors,
-    addColors,
-    removeColor
-}), initialState);
+    colors: receiveColors,
+    addedColors: addColors,
+    removedColor: removeColor
+}), initialState, applyMiddleware(...middlewares));
+
+store.dispatch(fetchColors());
 
 const html = renderToString(
     <Provider store={store}>
