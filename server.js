@@ -5,6 +5,10 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import { renderToString } from 'react-dom/server';
 
+import receiveColors from './reducer/receiveColors';
+import addColors from './reducer/addColors';
+import removeColor from './reducer/removeColor';
+
 const app = express();
 
 app.use('/assets', express.static(path.resolve(__dirname, 'assets')));
@@ -18,13 +22,11 @@ const initialState = {
     addedColors: [],
     removedColor: {}
 };
-const store = createStore((state, action) => {
-    if(state === undefined) {
-        return initialState
-    } else {
-        return state;
-    }
-}, initialState);
+const store = createStore(combineReducers({
+    receiveColors,
+    addColors,
+    removeColor
+}), initialState);
 
 const html = renderToString(
     <Provider store={store}>
