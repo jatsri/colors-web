@@ -1,10 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import fetchColors from '../service/fetchColors';
 
 class App extends React.Component {
     render() {
-        return (<div>Hello World</div>)
+        return (<div>{this.props.text}</div>)
     }
 
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        text: 'Hello World'
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {}
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);
