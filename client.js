@@ -6,6 +6,7 @@ import { createStore, combineReducers } from 'redux'
 import receiveColors from './reducer/receiveColors';
 import addColors from './reducer/addColors';
 import removeColor from './reducer/removeColor';
+import App from './components/App'
 
 const state = window.__STATE__;
 
@@ -19,7 +20,7 @@ const store = createStore(combineReducers({
 
 hydrate(
     <Provider store={store}>
-        <div>Hello World</div>
+        <App/>
     </Provider>,
     document.getElementById('app')
 );

@@ -8,6 +8,7 @@ import { renderToString } from 'react-dom/server';
 import receiveColors from './reducer/receiveColors';
 import addColors from './reducer/addColors';
 import removeColor from './reducer/removeColor';
+import App from './components/App';
 
 const app = express();
 
@@ -30,7 +31,7 @@ const store = createStore(combineReducers({
 
 const html = renderToString(
     <Provider store={store}>
-        <div>Hello World</div>
+        <App/>
     </Provider>
 )
 
