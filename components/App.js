@@ -45,13 +45,14 @@ class App extends React.Component {
             elements: [...this.state.elements, <ColorInput onAdd={this.handleAddButton.bind(this)}/>]
         })
     }
+
     render() {
         return (<React.Fragment>
             {this.props.colors.map((color) => {
                 return (
                     <React.Fragment>
                         <div key={color.id} className="color_container" style={{ backgroundColor: color.hex }}>{color.name}</div>
-                        <button type="button" onClick={this.handleRemove.bind(this, color.id)}>Remove Color</button>
+                        <button className="remove_button" type="button" onClick={this.handleRemove.bind(this, color.id)}>Remove Color</button>
                     </React.Fragment>
                 )
             })}
@@ -65,6 +66,10 @@ class App extends React.Component {
                 </fieldset>
             </form>
         </React.Fragment>)
+    }
+
+    componentDidMount() {
+        this.props.receiveColorsService();
     }
 
 }
