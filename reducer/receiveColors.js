@@ -3,7 +3,7 @@ export  default ( state = [], action) => {
         case 'RECEIVE_COLORS':
             return [
                 ...state,
-                action.data
+                ...action.data
             ]
         default:
             return state
