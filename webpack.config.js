@@ -6,12 +6,23 @@ module.exports = {
         client: './client.js'
     },
     output: {
-        path: path.resolve(__dirname, 'assets'),
+        path: path.resolve(__dirname, 'dist'),
         filename: "[name].js"
     },
     module: {
         rules: [
-            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            }
         ]
-    }
+    },
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
 };

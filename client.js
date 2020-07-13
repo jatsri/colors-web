@@ -9,6 +9,8 @@ import addColors from './reducer/addColors';
 import removeColor from './reducer/removeColor';
 import App from './components/App'
 
+import './assets/index.scss';
+
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

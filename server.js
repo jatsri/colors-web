@@ -16,7 +16,7 @@ const app = express();
 
 const middlewares = [thunk];
 
-app.use('/assets', express.static(path.resolve(__dirname, 'assets')));
+app.use('/dist', express.static(path.resolve(__dirname, 'dist')));
 
 app.listen('5000', () => {
     console.log('Server is listening on 5000');
@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
     const scripts = ` <script>
                    window.__STATE__ = ${JSON.stringify(preloadedState)}
                 </script>
-                <script src="/assets/client.js"></script>
+                <script src="/dist/client.js"></script>
                 `;
 
     const html = `<!DOCTYPE html>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class App extends React.Component {
     render() {
-        return (<div>{this.props.text}</div>)
+        return (<div className="color_container">{this.props.text}</div>)
     }
 
 }
