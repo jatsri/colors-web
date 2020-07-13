@@ -5,6 +5,8 @@ export  default ( state = [], action) => {
                 ...state,
                 ...action.data
             ]
+        case 'REMOVE_COLOR':
+            return state.filter((item) => item.id !== action.data.id)
         default:
             return state
     }
