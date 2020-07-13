@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import removeColor from '../action/removeColor';
+import removeColorService from '../service/removeColor';
+import receiveColorsService from '../service/fetchColors'
 
 class App extends React.Component {
     handleRemove(id) {
-        console.log('props', this.props);
         const colorToRemove = this.props.colors.find((color) => color.id === id);
 
-        console.log('colorToRemove', colorToRemove);
-
-        this.props.removeColor(colorToRemove);
+        this.props.removeColorService(colorToRemove.id).then(() => {
+            this.props.receiveColorsService();
+        })
     }
 
     render() {
@@ -35,8 +36,11 @@ const mapStateToProps = state => {
     }
 }
 
+
 const mapDispatchToProps = dispatch => bindActionCreators({
-    removeColor
+    removeColor,
+    removeColorService,
+    receiveColorsService
 }, dispatch)
 
 export default connect(
