@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux';
 
 
 import ColorInput from './ColorInput';
-import removeColor from '../action/removeColor';
-import addColors from '../action/addColors';
-import addColorsService from '../service/addColors';
+import removeColor from '../action/actionCreator/removeColor';
+import addColors from '../action/actionCreator/addColors';
+import addColorsService from '../services/updateColors';
 
 class ColorInputList extends React.Component {
     constructor(...args) {

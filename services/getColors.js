@@ -1,5 +1,5 @@
 import getFetch from '../lib/getFetch';
-import receiveColors from '../action/receiveColors';
+import receiveColors from '../action/actionCreator/receiveColors';
 
 export default () => {
     const fetch = getFetch();

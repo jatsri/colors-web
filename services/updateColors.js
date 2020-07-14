@@ -1,10 +1,9 @@
 import getFetch from '../lib/getFetch';
-import fetchColors from './fetchColors';
+import fetchColors from './getColors';
 
 export default () => {
     const fetch = getFetch();
     return (dispatch, getState) => {
-        console.log('getState', JSON.stringify({ items: getState().addedColors }));
        return fetch('http://localhost:3000/colors', {
            method: 'POST',
            body: JSON.stringify({ items: getState().addedColors}),

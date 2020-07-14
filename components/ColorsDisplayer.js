@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import removeColorService from '../service/removeColor';
-import receiveColorsService from '../service/fetchColors';
+import removeColorService from '../services/deleteColor';
+import receiveColorsService from '../services/getColors';
 
 class ColorsDisplayer extends React.Component {
     constructor(...args) {
@@ -12,9 +12,10 @@ class ColorsDisplayer extends React.Component {
     }
 
      handleRemove(id) {
-        const colorToRemove = this.props.colors.find((color) => color.id === id);
+         console.log('id', id);
+        // const colorToRemove = this.props.colors.find((color) => color.id === id);
 
-        this.props.removeColorService(colorToRemove.id).then(() => {
+        this.props.removeColorService(id).then(() => {
             this.props.receiveColorsService();
         })
      }

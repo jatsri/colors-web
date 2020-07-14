@@ -1,4 +1,4 @@
-import { REMOVE_COLOR } from './actionTypes';
+import { REMOVE_COLOR } from '../actionTypes';
 
 export  default (color) => ({
     type: REMOVE_COLOR,

@@ -8,9 +8,8 @@ import { renderToString } from 'react-dom/server';
 
 import receiveColors from './reducer/receiveColors';
 import addColors from './reducer/addColors';
-import removeColor from './reducer/removeColor';
 import App from './components/App';
-import fetchColors from './service/fetchColors';
+import fetchColors from './services/getColors';
 
 const app = express();
 
@@ -24,13 +23,11 @@ app.listen('5000', () => {
 
 const initialState = {
     colors: [],
-    addedColors: [],
-    removedColor: {}
+    addedColors: []
 };
 const store = createStore(combineReducers({
     colors: receiveColors,
-    addedColors: addColors,
-    removedColor: removeColor
+    addedColors: addColors
 }), initialState, applyMiddleware(...middlewares));
 
 store.dispatch(fetchColors());

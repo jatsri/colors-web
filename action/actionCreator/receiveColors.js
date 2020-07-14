@@ -1,4 +1,4 @@
-import { RECEIVE_COLORS } from './actionTypes';
+import { RECEIVE_COLORS } from '../actionTypes';
 
 export  default (colors) => ({
     type: RECEIVE_COLORS,
