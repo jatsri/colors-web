@@ -14,7 +14,7 @@ class App extends React.Component {
         super(...args);
 
         this.state = {
-            elements: [<ColorInput onAdd={this.handleAddButton.bind(this)}/>]
+            colorInputs: 1
         }
     }
 
@@ -30,9 +30,10 @@ class App extends React.Component {
         e.preventDefault();
         this.props.addColorsService();
         this.setState({
-            elements: [<ColorInput color='' hexValue='' onAdd={this.handleAddButton.bind(this)}/>]
+            colorInputs: 1
         })
         this.props.addColors([]);
+        window.location.reload();
     }
 
     handleAddButton(enteredColor) {
@@ -40,9 +41,24 @@ class App extends React.Component {
             color: enteredColor.colorName,
             hex: enteredColor.hexValue
         })
-        console.log('from handleAddButton');
+
         this.setState({
-            elements: [...this.state.elements, <ColorInput onAdd={this.handleAddButton.bind(this)}/>]
+            colorInputs: ++this.state.colorInputs
+
+        })
+    }
+
+    handleRemoveButton(removedColor) {
+        this.props.removeColor({
+            color: removedColor.colorName,
+            hex: removedColor.hexValue
+        })
+
+        this.setState((currentState) => {
+            return {
+                colorInputs: --this.state.colorInputs
+            }
+
         })
     }
 
@@ -61,7 +77,9 @@ class App extends React.Component {
                     <legend>
                         Add Colors
                     </legend>
-                    { this.state.elements }
+                    {
+                        Array.from({length: this.state.colorInputs}).fill(<ColorInput isSubmitted={this.state.isSubmitted} onAdd={this.handleAddButton.bind(this)} onRemove={this.handleRemoveButton.bind(this)}/>, 0, this.state.colorInputs)
+                    }
                     <button type="submit">Save Colors</button>
                 </fieldset>
             </form>

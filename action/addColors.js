@@ -1,6 +1,6 @@
-import { ADD_COLORS } from './actionTypes';
+import { ADD_COLOR } from './actionTypes';
 
-export  default (colors) => ({
-    type: ADD_COLORS,
-    data: colors
+export  default (color) => ({
+    type: ADD_COLOR,
+    data: color
 });
