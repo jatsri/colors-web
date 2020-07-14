@@ -1,0 +1,27 @@
+.colors-container {
+  display: inline-block;
+  width: 50%;
+
+  .color_stick {
+    margin: 5px;
+  }
+
+  .remove_button {
+    border-radius: 10px;
+    border: none;
+    background-color: #DC143C;
+    height: 20px;
+    float: right;
+    vertical-align: top;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.color_container {
+  border-radius: 7px;
+  display: inline-block;
+  height: 20px;
+  width: 80%;
+}

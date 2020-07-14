@@ -1,10 +1,20 @@
-.color_container {
-  margin: 7px;
-  height: 20px;
-  width: 50%;
-  border-radius: 7px;
+body {
+  margin: 0;
 }
+header {
+  background-color: #8A2BE2;
+  font-size: 20px;
+  font-family: fantasy;
+  height: 50px;
+  position: relative;
+  margin-bottom: 25px;
+  text-align: center;
 
-.remove_button {
-  display: inline;
+
+  div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

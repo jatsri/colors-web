@@ -22,16 +22,16 @@ class ColorsDisplayer extends React.Component {
 
     render() {
         return (
-            <React.Fragment>
+            <div className="colors-container">
                 {this.props.colors.map((color) => {
                     return (
-                        <div key={color.id}>
+                        <div key={color.id} className="color_stick">
                             <div className="color_container" style={{ backgroundColor: color.hex }}>{color.name}</div>
-                            <button className="remove_button" type="button" onClick={() => this.handleRemove(color.id)}>Remove Color</button>
+                            <button className="remove_button" type="button" onClick={() => this.handleRemove(color.id)}>Remove</button>
                         </div>
                     )
                 })}
-            </React.Fragment>
+            </div>
         )
     }
 

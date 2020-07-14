@@ -1,0 +1,48 @@
+form {
+  float: right;
+}
+
+fieldset {
+  padding-bottom: 0;
+  border-color: black;
+
+  legend {
+    font-style: oblique;
+  }
+
+  input {
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 5px;
+    font-family: cursive;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.save_button {
+  border-radius: 20px;
+  border: none;
+  background-color: #00FF7F;
+  float: right;
+  margin: 7px;
+}
+
+.add_button, .remove_button {
+  border-radius: 10px;
+  border: none;
+  height: 20px;
+  vertical-align: text-bottom;
+}
+
+.add_button, .save_button {
+  background-color: #32CD32;
+  font-family: cursive;
+}
+
+.remove_button {
+  background-color: #DC143C;
+  font-family: cursive;
+}

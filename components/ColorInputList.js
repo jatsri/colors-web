@@ -72,7 +72,7 @@ class ColorInputList extends React.Component {
                             <ColorInput key={index} isSubmitted={this.state.isSubmitted} onAdd={this.handleAddButton} onRemove={this.handleRemoveButton}/>,
                         )
                     }
-                    <button type="submit">Save Colors</button>
+                    <button className="save_button" type="submit">Save Colors</button>
                 </fieldset>
             </form>
         );

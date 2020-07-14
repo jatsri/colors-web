@@ -10,6 +10,9 @@ class App extends React.Component {
 
     render() {
         return (<React.Fragment>
+            <header>
+                <div>Colors Admin</div>
+            </header>
             <ColorsDisplayer/>
             <ColorInputList />
         </React.Fragment>)
