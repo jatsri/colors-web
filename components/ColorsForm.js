@@ -8,7 +8,7 @@ import removeColor from '../action/actionCreator/removeColor';
 import addColors from '../action/actionCreator/addColors';
 import addColorsService from '../services/updateColors';
 
-class ColorInputList extends React.Component {
+class ColorsForm extends React.Component {
     constructor(...args) {
         super(...args);
 
@@ -82,4 +82,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     addColorsService
 }, dispatch)
 
-export default connect(null, mapDispatchToProps)(ColorInputList)
+export default connect(null, mapDispatchToProps)(ColorsForm)

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ColorInputList from './ColorInputList';
+import ColorsForm from './ColorsForm';
 import ColorsDisplayer from './ColorsDisplayer';
 
 class App extends React.Component {
@@ -14,7 +14,7 @@ class App extends React.Component {
                 <div>Colors Admin</div>
             </header>
             <ColorsDisplayer/>
-            <ColorInputList />
+            <ColorsForm />
         </React.Fragment>)
     }
 }
