@@ -1,5 +1,6 @@
 form {
   float: right;
+  margin: 7px;
 }
 
 fieldset {
@@ -23,26 +24,21 @@ fieldset {
 }
 
 .save_button {
-  border-radius: 20px;
-  border: none;
-  background-color: #00FF7F;
   float: right;
-  margin: 7px;
 }
 
-.add_button, .remove_button {
+.remove_button {
   border-radius: 10px;
+  background-color: #DC143C;
   border: none;
-  height: 20px;
+  font-family: cursive;
   vertical-align: text-bottom;
 }
 
 .add_button, .save_button {
+  border-radius: 20px;
+  border: none;
   background-color: #32CD32;
   font-family: cursive;
-}
-
-.remove_button {
-  background-color: #DC143C;
-  font-family: cursive;
+  margin: 7px;
 }

@@ -16,8 +16,8 @@ class ColorInputList extends React.Component {
             colorInputs: 1
         }
 
-        this.handleAddButton = this.handleAddButton.bind(this);
-        this.handleRemoveButton = this.handleRemoveButton.bind(this);
+        this.handleInputBlur = this.handleInputBlur.bind(this);
+        this.handleRemoveButtonClick = this.handleRemoveButtonClick.bind(this);
     }
 
     handleSubmit(e) {
@@ -32,29 +32,24 @@ class ColorInputList extends React.Component {
         })
     }
 
-    handleAddButton(enteredColor) {
-        this.props.addColors({
-            color: enteredColor.colorName,
-            hex: enteredColor.hexValue
-        })
-
-        this.setState({
-            colorInputs: ++this.state.colorInputs
-
-        })
+    handleInputBlur(enteredColor) {
+        this.props.addColors(enteredColor)
     }
 
-    handleRemoveButton(removedColor) {
+    handleRemoveButtonClick(removedColor) {
         this.props.removeColor({
             color: removedColor.colorName,
             hex: removedColor.hexValue
         })
 
-        this.setState((currentState) => {
-            return {
-                colorInputs: --this.state.colorInputs
-            }
+        this.setState( {
+            colorInputs: this.state.colorInputs === 1 ? this.state.colorInputs : --this.state.colorInputs
+        })
+    }
 
+    handleAddButtonClick() {
+        this.setState({
+            colorInputs: ++this.state.colorInputs
         })
     }
 
@@ -69,9 +64,10 @@ class ColorInputList extends React.Component {
                         Array.from({
                             length: this.state.colorInputs
                         }).map((item, index) =>
-                            <ColorInput key={index} isSubmitted={this.state.isSubmitted} onAdd={this.handleAddButton} onRemove={this.handleRemoveButton}/>,
+                            <ColorInput key={index} index={index} totalInputs={this.state.colorInputs} isSubmitted={this.state.isSubmitted} onInputBlur={this.handleInputBlur} onRemove={this.handleRemoveButtonClick}/>,
                         )
                     }
+                    <button className="add_button" type="button" onClick={this.handleAddButtonClick.bind(this)}>Add Colors</button>
                     <button className="save_button" type="submit">Save Colors</button>
                 </fieldset>
             </form>
