@@ -41,7 +41,7 @@ class ColorsDisplayer extends React.Component {
 }
 const mapStateToProps = state => {
     return {
-        colors: state.colors
+        colors: state.receivedColors
     }
 }
 

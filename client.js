@@ -20,7 +20,7 @@ const state = window.__STATE__;
 delete window.__STATE__;
 
 const store = createStore(combineReducers({
-    colors: receiveColors,
+    receivedColors: receiveColors,
     addedColors: addColors
 }), state, composeEnhancers(applyMiddleware(...middlewares)));
 

@@ -26,7 +26,7 @@ const initialState = {
     addedColors: []
 };
 const store = createStore(combineReducers({
-    colors: receiveColors,
+    receivedColors: receiveColors,
     addedColors: addColors
 }), initialState, applyMiddleware(...middlewares));
 
