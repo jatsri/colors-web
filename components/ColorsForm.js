@@ -48,6 +48,13 @@ class ColorsForm extends React.Component {
     }
 
     handleAddButtonClick() {
+        const lastEntry =this.props.colors.slice(-1, 1);
+        const hexPattern = RegExp('^#([0-9A-F]{3}){1,2}$');
+
+        if(!lastEntry.color || !lastEntry.hex || !hexPattern.test(lastEntry.hex)) {
+            return alert('Please complete the open entry');
+        }
+
         this.setState({
             colorInputs: ++this.state.colorInputs
         })
@@ -75,6 +82,9 @@ class ColorsForm extends React.Component {
     }
 }
 
+const mapStateToProps = state => ({
+    colors: state.addedColors
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     removeColor,
@@ -82,4 +92,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     addColorsService
 }, dispatch)
 
-export default connect(null, mapDispatchToProps)(ColorsForm)
+export default connect(mapStateToProps, mapDispatchToProps)(ColorsForm)
