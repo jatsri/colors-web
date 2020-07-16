@@ -8,6 +8,7 @@ import { renderToString } from 'react-dom/server';
 
 import receiveColors from './reducer/receiveColors';
 import addColors from './reducer/addColors';
+import validation from './reducer/validation';
 import App from './components/App';
 import fetchColors from './services/getColors';
 
@@ -27,7 +28,8 @@ const initialState = {
 };
 const store = createStore(combineReducers({
     receivedColors: receiveColors,
-    addedColors: addColors
+    addedColors: addColors,
+    isFormValid: validation
 }), initialState, applyMiddleware(...middlewares));
 
 store.dispatch(fetchColors());

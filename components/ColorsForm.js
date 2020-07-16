@@ -7,6 +7,7 @@ import ColorInput from './ColorInput';
 import removeColor from '../action/actionCreator/removeColor';
 import addColors from '../action/actionCreator/addColors';
 import addColorsService from '../services/updateColors';
+import validationSuccess from '../action/actionCreator/validationSuccess';
 
 class ColorsForm extends React.Component {
     constructor(...args) {
@@ -22,6 +23,10 @@ class ColorsForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
+        if(!this.props.isFormValid) {
+            return alert('Please complete the form');
+        }
         this.setState({
             colorInputs: 1
         })
@@ -48,9 +53,8 @@ class ColorsForm extends React.Component {
     }
 
     handleAddButtonClick() {
-        const lastEntry =this.props.colors.slice(-1, 1);
+        const lastEntry =this.props.colors.slice(-1)[0];
         const hexPattern = RegExp('^#([0-9A-F]{3}){1,2}$');
-
         if(!lastEntry.color || !lastEntry.hex || !hexPattern.test(lastEntry.hex)) {
             return alert('Please complete the open entry');
         }
@@ -71,7 +75,7 @@ class ColorsForm extends React.Component {
                         Array.from({
                             length: this.state.colorInputs
                         }).map((item, index) =>
-                            <ColorInput key={index} index={index} totalInputs={this.state.colorInputs} isSubmitted={this.state.isSubmitted} onInputBlur={this.handleInputBlur} onRemove={this.handleRemoveButtonClick}/>,
+                            <ColorInput key={index} index={index} totalInputs={this.state.colorInputs} isSubmitted={this.state.isSubmitted} onInputBlur={this.handleInputBlur} onRemove={this.handleRemoveButtonClick} validationSuccess={this.props.validationSuccess}/>,
                         )
                     }
                     <button className="add_button" type="button" onClick={this.handleAddButtonClick.bind(this)}>Add Colors</button>
@@ -83,13 +87,15 @@ class ColorsForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    colors: state.addedColors
+    colors: state.addedColors,
+    isFormValid: state.isFormValid
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     removeColor,
     addColors,
-    addColorsService
+    addColorsService,
+    validationSuccess
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(ColorsForm)

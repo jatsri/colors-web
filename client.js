@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 
 import receiveColors from './reducer/receiveColors';
 import addColors from './reducer/addColors';
+import validation from './reducer/validation';
 import App from './components/App'
 
 import './assets/index.scss';
@@ -21,7 +22,8 @@ delete window.__STATE__;
 
 const store = createStore(combineReducers({
     receivedColors: receiveColors,
-    addedColors: addColors
+    addedColors: addColors,
+    isFormValid: validation
 }), state, composeEnhancers(applyMiddleware(...middlewares)));
 
 hydrate(
