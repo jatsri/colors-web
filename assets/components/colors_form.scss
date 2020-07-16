@@ -21,6 +21,10 @@ fieldset {
       outline: none;
     }
   }
+
+  .invalid_input {
+    border: 1px solid red;
+  }
 }
 
 .save_button {
