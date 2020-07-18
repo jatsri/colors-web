@@ -1,5 +1,4 @@
 import getFetch from '../lib/getFetch';
-import fetchColors from './getColors';
 
 import validationError from '../action/actionCreator/validationError';
 
@@ -14,7 +13,6 @@ export default () => {
 
         const invalidColors = [];
         colors.forEach((item) => {
-            console.log('Item from serivce', item);
             const hexPattern = RegExp('^#([0-9A-F]{3}){1,2}$');
             if(!item.color || !item.hex || !hexPattern.test(item.hex)) {
                 invalidColors.push(item);
@@ -31,11 +29,6 @@ export default () => {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-            .then(() => {
-                dispatch(fetchColors());
-            })
-
-
+        });
     }
 }

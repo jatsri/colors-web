@@ -47,14 +47,20 @@ class ColorInput extends React.Component {
         }
 
         if(this.colorInput.value && this.hexInput.value) {
-            this.props.onInputBlur({ index: this.props.index, color: this.colorInput.value, hex: this.hexInput.value })
-            this.props.validationSuccess();
-            this.setState({
-                colorInputValue: this.colorInput.value,
-                hexInputValue: this.hexInput.value,
-                invalidColorNameEntry: false,
-                invalidHexValueEntry: false
-            })
+            const isColorAlreadyExists = this.props.colors.find((item) => item.hex === this.hexInput.value);
+
+            if(!isColorAlreadyExists) {
+                this.props.onInputBlur({ index: this.props.index, color: this.colorInput.value, hex: this.hexInput.value })
+                this.props.validationSuccess();
+                this.setState({
+                    colorInputValue: this.colorInput.value,
+                    hexInputValue: this.hexInput.value,
+                    invalidColorNameEntry: false,
+                    invalidHexValueEntry: false
+                });
+            } else {
+                alert(`${this.hexInput.value} is already saved`);
+            }
         }
     }
 

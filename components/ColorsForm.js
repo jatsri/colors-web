@@ -65,6 +65,7 @@ class ColorsForm extends React.Component {
     }
 
     render() {
+        console.log('this.props.colors::', this.props.receivedColors);
         return (
             <form onSubmit={this.handleSubmit.bind(this)}>
                 <fieldset>
@@ -75,7 +76,16 @@ class ColorsForm extends React.Component {
                         Array.from({
                             length: this.state.colorInputs
                         }).map((item, index) =>
-                            <ColorInput key={index} index={index} totalInputs={this.state.colorInputs} isSubmitted={this.state.isSubmitted} onInputBlur={this.handleInputBlur} onRemove={this.handleRemoveButtonClick} validationSuccess={this.props.validationSuccess}/>,
+                            <ColorInput
+                                key={index}
+                                index={index}
+                                totalInputs={this.state.colorInputs}
+                                isSubmitted={this.state.isSubmitted}
+                                onInputBlur={this.handleInputBlur}
+                                onRemove={this.handleRemoveButtonClick}
+                                validationSuccess={this.props.validationSuccess}
+                                colors={this.props.receivedColors}
+                            />,
                         )
                     }
                     <button className="add_button" type="button" onClick={this.handleAddButtonClick.bind(this)}>Add Colors</button>
@@ -87,6 +97,7 @@ class ColorsForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
+    receivedColors: state.receivedColors,
     colors: state.addedColors,
     isFormValid: state.isFormValid
 });
