@@ -32,8 +32,9 @@ class ColorsForm extends React.Component {
         })
 
         this.props.addColorsService().then(() => {
-            this.props.addColors([]);
-            window.location.reload();
+            if(!this.props.errors.postColors) {
+                window.location.reload();
+            }
         })
     }
 
@@ -90,6 +91,7 @@ class ColorsForm extends React.Component {
                     }
                     <button className="add_button" type="button" onClick={this.handleAddButtonClick.bind(this)}>Add Colors</button>
                     <button className="save_button" type="submit">Save Colors</button>
+                    {this.props.errors.postColors && alert('Something went wrong. Please try again!')}
                 </fieldset>
             </form>
         );
@@ -99,7 +101,8 @@ class ColorsForm extends React.Component {
 const mapStateToProps = state => ({
     receivedColors: state.receivedColors,
     colors: state.addedColors,
-    isFormValid: state.isFormValid
+    isFormValid: state.isFormValid,
+    errors: state.errors
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

@@ -12,12 +12,7 @@ class ColorsDisplayer extends React.Component {
     }
 
      handleRemove(id) {
-         console.log('id', id);
-        // const colorToRemove = this.props.colors.find((color) => color.id === id);
-
-        this.props.removeColorService(id).then(() => {
-            this.props.receiveColorsService();
-        })
+        this.props.removeColorService(id);
      }
 
     render() {
@@ -31,17 +26,20 @@ class ColorsDisplayer extends React.Component {
                         </div>
                     )
                 })}
+                {this.props.errors.deleteColor && alert('Something went wrong. Please try again!')}
+                {this.props.errors.getColors && alert('Something went wrong while fetching colors. Please refresh the page to try again!')}
             </div>
         )
     }
 
     componentDidMount() {
-        this.props.receiveColorsService();
+        !this.props.errors.getColors && this.props.receiveColorsService();
     }
 }
 const mapStateToProps = state => {
     return {
-        colors: state.receivedColors
+        colors: state.receivedColors,
+        errors: state.errors
     }
 }
 

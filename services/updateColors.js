@@ -1,6 +1,8 @@
 import getFetch from '../lib/getFetch';
 
 import validationError from '../action/actionCreator/validationError';
+import serverError from '../action/actionCreator/serverError';
+import { SERVER_ERROR_POST } from '../action/actionTypes';
 
 export default () => {
     const fetch = getFetch();
@@ -29,6 +31,10 @@ export default () => {
             headers: {
                 'Content-Type': 'application/json'
             }
-        });
+        })
+            .catch((err) => {
+                console.log('Error during saving colors', err);
+                return dispatch(serverError('SERVER_ERROR_POST'))
+            });
     }
 }

@@ -10,6 +10,7 @@ import validation from './reducer/validation';
 import App from './components/App'
 
 import './assets/index.scss';
+import serverError from './reducer/serverError';
 
 
 
@@ -23,7 +24,8 @@ delete window.__STATE__;
 const store = createStore(combineReducers({
     receivedColors: receiveColors,
     addedColors: addColors,
-    isFormValid: validation
+    isFormValid: validation,
+    errors: serverError
 }), state, composeEnhancers(applyMiddleware(...middlewares)));
 
 hydrate(
